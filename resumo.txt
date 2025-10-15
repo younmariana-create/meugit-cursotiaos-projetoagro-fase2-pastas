@@ -1,0 +1,8 @@
+Resumo das Leituras de Irrigação
+---------------------------------
+ID: 1 | Setor: Laranja | Umidade: 30.0% | Irrigado: Sim | Data: 2025-10-15
+ID: 2 | Setor: Cana-de-açúcar | Umidade: 60.0% | Irrigado: Nao | Data: 2025-10-15
+ID: 3 | Setor: Laranja | Umidade: 30.0% | Irrigado: Sim | Data: 2025-10-15
+ID: 4 | Setor: Cana-de-açúcar | Umidade: 70.0% | Irrigado: Nao | Data: 2025-10-15
+ID: 5 | Setor: Laranja | Umidade: 57.0% | Irrigado: Nao | Data: 2025-10-15
+ID: 6 | Setor: Cana-de-açúcar | Umidade: 43.0% | Irrigado: Sim | Data: 2025-10-15

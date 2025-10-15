@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "setor": "Laranja",
+        "umidade": 30.0,
+        "irrigado": "Sim",
+        "data": "2025-10-15"
+    },
+    {
+        "id": 2,
+        "setor": "Cana-de-açúcar",
+        "umidade": 60.0,
+        "irrigado": "Nao",
+        "data": "2025-10-15"
+    },
+    {
+        "id": 3,
+        "setor": "Laranja",
+        "umidade": 30.0,
+        "irrigado": "Sim",
+        "data": "2025-10-15"
+    },
+    {
+        "id": 4,
+        "setor": "Cana-de-açúcar",
+        "umidade": 70.0,
+        "irrigado": "Nao",
+        "data": "2025-10-15"
+    },
+    {
+        "id": 5,
+        "setor": "Laranja",
+        "umidade": 57.0,
+        "irrigado": "Nao",
+        "data": "2025-10-15"
+    },
+    {
+        "id": 6,
+        "setor": "Cana-de-açúcar",
+        "umidade": 43.0,
+        "irrigado": "Sim",
+        "data": "2025-10-15"
+    }
+]
