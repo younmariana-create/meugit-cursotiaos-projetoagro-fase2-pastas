@@ -1,20 +1,16 @@
-# main.py
+
 import csv
 import json
 from datetime import date, datetime
 import oracledb
 import os
 
-# ---------------------------
-# CONFIGURAÇÃO ORACLE (edite)
-# ---------------------------
+
 DB_USER = "RM568548"
 DB_PASSWORD = "280106"
-DB_DSN = "oracle.fiap.com.br/orcl"   # ou "localhost:1521/XEPDB1" se for local
+DB_DSN = "oracle.fiap.com.br/orcl" 
 
-# ---------------------------
-# SETORES DISPONÍVEIS
-# ---------------------------
+
 SETORES = {
     1: "Cana-de-açúcar",
     2: "Laranja"
@@ -24,9 +20,7 @@ CSV_FILE = "leituras.csv"
 JSON_FILE = "leituras.json"
 TXT_FILE = "resumo.txt"
 
-# ---------------------------
-# UTIL: gerar id automático (pega último id do CSV se existir)
-# ---------------------------
+
 def proximo_id():
     if not os.path.exists(CSV_FILE):
         return 1
@@ -40,9 +34,7 @@ def proximo_id():
     except Exception:
         return 1
 
-# ---------------------------
-# COLETAR UMA LEITURA (por setor)
-# ---------------------------
+
 def coletar_leitura():
     print("\nSetores disponíveis:")
     for k, v in SETORES.items():
@@ -68,7 +60,7 @@ def coletar_leitura():
 
     irrigado = "Sim" if umidade < 50 else "Nao"
     id_leitura = proximo_id()
-    data_iso = date.today().isoformat()  # YYYY-MM-DD
+    data_iso = date.today().isoformat() 
 
     leitura = {
         "id": id_leitura,
@@ -80,9 +72,7 @@ def coletar_leitura():
     print(f"✅ Registrado: ID={id_leitura} | Setor={setor} | Umidade={umidade}% | Irrigado={irrigado}")
     return leitura
 
-# ---------------------------
-# SALVAR (append) NO CSV
-# ---------------------------
+
 def salvar_csv_append(leitura):
     file_exists = os.path.exists(CSV_FILE)
     with open(CSV_FILE, "a", newline="", encoding="utf-8") as f:
@@ -91,19 +81,17 @@ def salvar_csv_append(leitura):
             writer.writeheader()
         writer.writerow(leitura)
 
-# ---------------------------
-# REESCREVER (exportar) CSV/JSON/TXT a partir de lista
-# ---------------------------
+
 def exportar_arquivos(leituras):
-    # CSV
+    
     with open(CSV_FILE, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=["id", "setor", "umidade", "irrigado", "data"])
         writer.writeheader()
         writer.writerows(leituras)
-    # JSON
+    
     with open(JSON_FILE, "w", encoding="utf-8") as f:
         json.dump(leituras, f, ensure_ascii=False, indent=4)
-    # TXT resumo
+    
     with open(TXT_FILE, "w", encoding="utf-8") as f:
         f.write("Resumo das Leituras de Irrigação\n")
         f.write("---------------------------------\n")
@@ -112,16 +100,14 @@ def exportar_arquivos(leituras):
                     f"Irrigado: {l['irrigado']} | Data: {l['data']}\n")
     print("📁 Arquivos exportados: leituras.csv, leituras.json, resumo.txt")
 
-# ---------------------------
-# LER TODO O CSV (histórico)
-# ---------------------------
+
 def ler_historico():
     if not os.path.exists(CSV_FILE):
         print("⛔ Não há histórico (arquivo CSV não encontrado).")
         return []
     with open(CSV_FILE, newline="", encoding="utf-8") as f:
         rows = list(csv.DictReader(f))
-        # converter tipos
+        
         for r in rows:
             try:
                 r["id"] = int(r["id"])
@@ -130,12 +116,10 @@ def ler_historico():
                 pass
         return rows
 
-# ---------------------------
-# ENVIAR PARA ORACLE (lista de leituras)
-# ---------------------------
+
 def enviar_para_oracle(leituras):
 
-    """Envia todas as leituras para o banco Oracle."""
+  
     try:
         conn = oracledb.connect(user=DB_USER, password=DB_PASSWORD, dsn=DB_DSN)
         cursor = conn.cursor()
@@ -168,9 +152,7 @@ def enviar_para_oracle(leituras):
             pass
 
 
-# ---------------------------
-# MENU PRINCIPAL
-# ---------------------------
+
 def menu():
     while True:
         print("\n=== MENU ===")
@@ -206,8 +188,6 @@ def menu():
         else:
             print("Opção inválida.")
 
-# ---------------------------
-# EXECUTAR
-# ---------------------------
+
 if __name__ == "__main__":
     menu()
