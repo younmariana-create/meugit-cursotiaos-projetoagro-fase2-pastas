@@ -1,7 +1,7 @@
 # FIAP - Faculdade de Informática e Administração Paulista
 
 <p align="center">
-<a href= "https://www.fiap.com.br/"><img src="assets/logo-fiap.png" alt="FIAP - Faculdade de Informática e Administração Paulista" width="40%" height="40%"></a>
+<a href= "https://www.fiap.com.br/"><img src="images/logo-fiap.png" alt="FIAP - Faculdade de Informática e Administração Paulista" width="40%" height="40%"></a>
 </p>
 
 
@@ -54,9 +54,9 @@ Dentre os arquivos e pastas presentes na raiz do projeto, definem-se:
 
 ## 🔧 Como executar o código
 
-Requisitos e Configuração do Ambiente no terminal
+Requisitos e Configuração do Ambiente no terminal:
 
-1️⃣ Criar e ativar o ambiente virtual
+1️⃣ Criar e ativar o ambiente virtual:
 python -m venv venv
 
 Ativar o ambiente:
@@ -68,27 +68,22 @@ Mac/Linux:
 source venv/bin/activate
 
 
-2️⃣ Instalar dependências
+2️⃣ Instalar dependências:
 pip install oracledb
 
 (Bibliotecas padrão como csv, json, datetime e os já vêm com o Python.)
 
 
-3️⃣ Configuração do Oracle
-No topo do arquivo main.py, altere as credenciais para o seu login Oracle:
-DB_USER = "xxxxxxxxxxx" # seu usuário
-DB_PASSWORD = "xxxxxxxx"  # sua senha
-DB_DSN = "xxxxxxxxxx" # seu localhost
+3️⃣ Configuração do Oracle:
+No topo do arquivo main.py, altere as credenciais para o seu login Oracle: DB_USER = "xxxxxxxxxxx" -> seu usuário; DB_PASSWORD = "xxxxxxxx" -> sua senha; DB_DSN = "xxxxxxxxxx" -> seu localhost
 
 
-💻 Como Executar o Programa
+💻 Como Executar o Programa:
 
-No terminal (com o ambiente virtual ativo), execute:
-
-python main.py
-
+No terminal (com o ambiente virtual ativo), execute: python main.py
 
 Será exibido o menu principal:
+
 
 === Sistema Inteligente de Irrigação ===
 1️⃣ Inserir nova leitura
@@ -98,44 +93,30 @@ Será exibido o menu principal:
 0️⃣ Sair
 
 
-🧠 Funcionalidades do Sistema
+🧠 Funcionalidades do Sistema:
 
-1️⃣ Inserir nova leitura
-O usuário informa:
-
-Nome do setor (ex: Cana-de-açúcar, Laranja)
-
-Umidade do solo (%)
+1️⃣ Inserir nova leitura:
+O usuário informa: Nome do setor (ex: Cana-de-açúcar, Laranja); Umidade do solo (%); 
 
 O sistema valida o valor, grava a leitura e indica se há necessidade de irrigação com base na cultura.
 
 
-2️⃣ Exibir histórico
-Mostra todas as leituras salvas, com:
-ID da leitura
-Data e hora
-Nome da cultura
-Umidade
-Status da irrigação
+2️⃣ Exibir histórico:
+Mostra todas as leituras salvas, com: ID da leitura; Data e hora; Nome da cultura; Umidade; Status da irrigação.
 
 
-3️⃣ Exportar dados
-Cria automaticamente os arquivos:
-dados.csv
-historico.txt
-historico.json
+3️⃣ Exportar dados:
+Cria automaticamente os arquivos: dados.csv; historico.txt; historico.json;
 
 Todos os formatos contêm as leituras completas, prontos para backup ou integração com outras ferramentas.
 
 
-4️⃣ Enviar dados ao Oracle
+4️⃣ Enviar dados ao Oracle:
 Conecta-se ao banco Oracle (usando oracledb), insere os dados da tabela LEITURA_IRRIGACAO e exibe um resumo:
-Leituras inseridas
-Leituras já existentes (ignoradas)
-Status da conexão
+Leituras inseridas, Leituras já existentes (ignoradas), Status da conexão.
 
 
-🧾 Estrutura da Tabela Oracle
+🧾 Estrutura da Tabela Oracle:
 CREATE TABLE LEITURA_IRRIGACAO (
   ID NUMBER PRIMARY KEY,
   CULTURA VARCHAR2(50),
@@ -144,7 +125,7 @@ CREATE TABLE LEITURA_IRRIGACAO (
 );
 
 
-🔍 Como Verificar os Dados no Oracle SQL Developer
+🔍 Como Verificar os Dados no Oracle SQL Developer:
 
 Abra o Oracle SQL Developer.
 
